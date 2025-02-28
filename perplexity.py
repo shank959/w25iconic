@@ -1,9 +1,14 @@
 from portkey_ai import Portkey
 import json
+import yfinance as yf
+from financials import get_financials
+
 """
 Replace info of priviate_company with real questionnaire fields
 Feel free to refine prompting
 """
+
+
 # Initialize Portkey client
 portkey = Portkey(
     api_key="oG2qS1nYSc7eMJeqI9k604TPmLTH",
@@ -66,3 +71,8 @@ for company in comparable_companies:
     print(f"Rationale: {company['selection_rationale']}\n")
 
 print(list_of_company)
+
+
+# EXTRACT RELEVANT FINANCIAL METRICS FROM COMPARABLE COMPANY LIST
+metric_list = get_financials(list_of_company)
+print(metric_list)
